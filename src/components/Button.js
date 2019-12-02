@@ -2,6 +2,22 @@ import React from 'react';
 import styled, {css} from 'styled-components';
 import { darken, lighten } from 'polished';
 
+const colorStyles = css`
+    /* 색상 */
+    ${({theme, color}) => {
+        const selcetd = theme.pallete[color];
+        return css`
+            background: ${color};
+            &:hover {
+                background: ${lighten(0.1, selcetd)};
+            }
+            &:active {
+                background: ${darken(0.1, selcetd)};
+            }
+        `;
+}}
+`;
+
 const StyledButton = styled.button`
     /* 공통 스타일 */
     dispaly: inline-flex;
@@ -18,19 +34,7 @@ const StyledButton = styled.button`
     height: 2.25rem;
     font-size: 1rem;
 
-    /* 색상 */
-    ${props => {
-        const color = props.theme.pallete[props.color];
-        return css`
-            background: ${color};
-            &:hover {
-                background: ${lighten(0.1, color)};
-            }
-            &:active {
-                background: ${darken(0.1, color)};
-            }
-        `;
-    }}
+    ${colorStyles}
 
     /* 기타 */
     & + & {
