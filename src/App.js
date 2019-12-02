@@ -13,7 +13,7 @@ const AppBlock = styled.div`
 
 const palette = {
   blue: '#22Bbe6',
-  glay: '#496057',
+  gray: '#496057',
   pink: '#f06595'
 }
 
@@ -26,6 +26,8 @@ function App() {
     >
       <AppBlock>
         <Button>button</Button>
+        <Button color='gray'>button</Button>
+        <Button color='pink'>button</Button>
       </AppBlock>
     </ThemeProvider>
     

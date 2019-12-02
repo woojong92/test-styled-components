@@ -18,16 +18,19 @@ const StyledButton = styled.button`
     height: 2.25rem;
     font-size: 1rem;
 
-
-
     /* 색상 */
-    background: ${props => props.theme.palette.blue};
-    &:hover {
-        background: ${props =>  lighten(0.1, props.theme.palette.blue)};
-    }
-    &:active {
-        background: ${props =>  darken(0.1, props.theme.palette.blue)};
-    }
+    ${props => {
+        const color = props.theme.pallete[props.color];
+        return css`
+            background: ${color};
+            &:hover {
+                background: ${lighten(0.1, color)};
+            }
+            &:active {
+                background: ${darken(0.1, color)};
+            }
+        `;
+    }}
 
     /* 기타 */
     & + & {
@@ -35,8 +38,16 @@ const StyledButton = styled.button`
     }
 `;
 
-function Button({ children, ...rest}) {
-    return <StyledButton {...rest}> {children}</StyledButton>
+function Button({ children, color,...rest}) {
+    return (
+        <StyledButton color={color} {...rest}> 
+            {children}
+        </StyledButton>
+    )
+}
+
+Button.defaultProps = {
+    color: 'blue'
 }
 
 export default Button;
