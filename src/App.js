@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import Button from './components/Button'
 
 const AppBlock = styled.div`
@@ -11,11 +11,24 @@ const AppBlock = styled.div`
   padding: 1rem;
 `;
 
+const palette = {
+  blue: '#22Bbe6',
+  glay: '#496057',
+  pink: '#f06595'
+}
+
 function App() {
   return (
-    <AppBlock>
-      <Button>button</Button>
-    </AppBlock>
+    <ThemeProvider 
+      theme={{
+        palette
+      }}
+    >
+      <AppBlock>
+        <Button>button</Button>
+      </AppBlock>
+    </ThemeProvider>
+    
   );
 }
 
